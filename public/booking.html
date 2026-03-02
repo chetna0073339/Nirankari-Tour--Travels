@@ -1,0 +1,32 @@
+<input id="name" placeholder="Name">
+<input id="phone" placeholder="Phone">
+<input id="service" placeholder="Service">
+<input id="date" type="date">
+
+<button onclick="book()">Book</button>
+
+<script>
+async function book(){
+
+await fetch("/book", {
+
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+name:document.getElementById("name").value,
+phone:document.getElementById("phone").value,
+service:document.getElementById("service").value,
+date:document.getElementById("date").value
+
+})
+
+});
+
+alert("Booking saved");
+
+}
+</script>

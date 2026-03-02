@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+</head>
+
+<body>
+
+<h1>Admin Panel - Nirankari Travels 🚖</h1>
+
+<table border="1">
+
+<thead>
+<tr>
+<th>Name</th>
+<th>Phone</th>
+<th>Service</th>
+<th>Date</th>
+</tr>
+</thead>
+
+<tbody id="data"></tbody>
+
+</table>
+
+<script>
+
+async function loadBookings(){
+
+const res = await fetch("/admin/bookings");
+
+const bookings = await res.json();
+
+const table = document.getElementById("data");
+
+bookings.forEach(b => {
+
+table.innerHTML += `
+<tr>
+<td>${b.name}</td>
+<td>${b.phone}</td>
+<td>${b.service}</td>
+<td>${b.date}</td>
+</tr>
+`;
+
+});
+
+}
+
+loadBookings();
+
+</script>
+
+</body>
+</html>
